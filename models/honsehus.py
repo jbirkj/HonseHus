@@ -13,14 +13,10 @@ class HonseHusModel(db.Model):
     def __init__(self, state):
         self.event_state = state
         self.event_date = datetime.now().strftime("%y%y%m")
-        #self.event_date = datetime.now().strftime("%D/%M/%Y")
-        #self.event_time = datetime.now().strftime("%H:%M:%S")
 
     def json(self):
         return {'state': self.event_state, 
             'date': self.event_date}
-#        return {'state': self.event_state, 
-#            'date': self.event_date, 'time': self.event_time}
 
     def save_to_db(self):
         db.session.add(self)
