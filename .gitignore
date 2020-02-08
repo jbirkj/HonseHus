@@ -1,0 +1,4 @@
+gitkey*
+*.db
+__pycache__
+
