@@ -8,12 +8,12 @@ class HonseHusModel(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     event_state = db.Column(db.String(80))
-    event_date = db.Column(db.String(6))
+    event_date = db.Column(db.String(6))    #yyyymmdd
     #event_time = db.Column(db.DateTime)
 
     def __init__(self, state):
         self.event_state = state
-        self.event_date = datetime.now().strftime("%y%y%m")
+        self.event_date = datetime.now().strftime("%y%m%d")
 
     def json(self):
         return {'state': self.event_state, 

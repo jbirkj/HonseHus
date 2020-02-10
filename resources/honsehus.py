@@ -3,11 +3,10 @@ from flask_restful import Resource, reqparse
 from models.honsehus import HonseHusModel
 
 
-
 class HonseHus(Resource):
 
-
-    def get(self, status):
+    '''
+    def put(self, status):
         
         EventState = HonseHusModel.find_by_state(status)
         
@@ -15,18 +14,16 @@ class HonseHus(Resource):
             return EventState.json()
         
         return {'message': 'Eventstate not found'}, 400
+    '''
 
-
-    def put(self, date):
+    def get(self, Ddate):
         
-        EventState = HonseHusModel.find_by_date(date)
-        
+        EventState = HonseHusModel.find_by_date(Ddate)
+        print("here")
         if EventState:
             return EventState.json()
         
         return {'message': 'Eventstate not found'}, 400
-
-
 
     def post(self, status):
         
@@ -39,3 +36,6 @@ class HonseHus(Resource):
 
         return h.json(), 201
 
+class HH(Resource):
+    def get(self):
+        return {'HonseHid updates': list(map(lambda x: x.json(), HonseHusModel.query.all()))}

@@ -1,7 +1,9 @@
+#app.py
 from flask import Flask, render_template
 from flask_restful import Resource, Api
 from flask_sqlalchemy import SQLAlchemy
-from resources.honsehus import HonseHus
+from resources.honsehus import HonseHus, HH
+from models.honsehus import HonseHusModel
 
 app = Flask(__name__)
 api = Api(app)
@@ -16,14 +18,14 @@ def create_tables():
 
 @app.route('/')
 def index():
+
     return render_template('home.html')
 
 
-
 api.add_resource(HonseHus, 
-    '/date/<string:date>',
-    '/status/<string:status>', 
+    '/getstatusbydate/<string:Ddate>', 
     '/update/<string:status>')
+api.add_resource(HH, '/alldata')
 
 
 if __name__ == '__main__':
