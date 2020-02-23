@@ -1,0 +1,5 @@
+Flask
+Flask-JWT
+Flas-RESTful
+Fals-SQLAlchemy
+uwsgi
